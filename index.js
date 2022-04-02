@@ -55,7 +55,7 @@ const draw = (image) => {
     }
     
     const soup = (value) => {
-      let result = data[i].toString(16)
+      let result = value.toString(16)
       
       if (result.length < 2) {
         result = `0${result}`
@@ -67,14 +67,14 @@ const draw = (image) => {
     let currentColor = `#${soup(data[i])}${soup(data[i + 1])}${soup(data[i + 2])}`
     let resolvedColor = nearestColor(currentColor)
     
-    // console.log(parseInt(resolvedColor.substring(3, 5), 16))
+    console.log(resolvedColor)
     
     data[i] = parseInt(resolvedColor.substring(1, 3), 16);
     data[i + 1] = parseInt(resolvedColor.substring(3, 5), 16);
     data[i + 2] = parseInt(resolvedColor.substring(5), 16);
   }
   
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.putImageData(imageData, 0, 0);
 };
 
@@ -118,13 +118,15 @@ function nearestColor(colorHex){
   return baseColors[index];
 }
 
-
 ////
 
 const downloadCanvas = () => {;
-  var dataURL = canvas.toDataURL("image/png");
-  var newTab = window.open('about:blank','image from canvas');
-  newTab.document.write("<img src='" + dataURL + "' alt='from canvas'/>");
+    let anchor = document.createElement("a");
+    anchor.href = canvas.toDataURL("image/png");
+    anchor.download = "IMAGE.PNG";
+    anchor.click();
+
+    anchor.parentElement.removeChild(anchor)
 }
 
 downloadButton.addEventListener('click', downloadCanvas)
