@@ -66,9 +66,7 @@ const draw = (image) => {
 
     let currentColor = `#${soup(data[i])}${soup(data[i + 1])}${soup(data[i + 2])}`
     let resolvedColor = nearestColor(currentColor)
-    
-    console.log(resolvedColor)
-    
+        
     data[i] = parseInt(resolvedColor.substring(1, 3), 16);
     data[i + 1] = parseInt(resolvedColor.substring(3, 5), 16);
     data[i + 2] = parseInt(resolvedColor.substring(5), 16);
