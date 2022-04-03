@@ -47,6 +47,7 @@ const draw = (image) => {
  
   for (let i = 0; i < data.length - 5; i += 4) {
     if (data[i + 3] < 255) {
+      console.log(`Removed partially transparent pixel`)
       data[i] = 0
       data[i + 1] = 0
       data[i + 2] = 0
@@ -66,6 +67,10 @@ const draw = (image) => {
 
     let currentColor = `#${soup(data[i])}${soup(data[i + 1])}${soup(data[i + 2])}`
     let resolvedColor = nearestColor(currentColor)
+
+    if (currentColor.toUpperCase() !== resolvedColor.toUpperCase()) {
+      console.log(`Replaced ${currentColor} with ${resolvedColor}`)
+    }
         
     data[i] = parseInt(resolvedColor.substring(1, 3), 16);
     data[i + 1] = parseInt(resolvedColor.substring(3, 5), 16);

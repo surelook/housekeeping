@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Housekeeping</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=0.1">
   </head>
   <body>
+    <h1>Housekeeping</h1>
+    <p>Upload a PNG to have cleansed</p>
+    <ul>
+      <li>Unsupported r/place colours will be replaced with the nearest supported colour</li>
+      <li>Pixels with less that full opacity will be removed.</li>
+    </ul>
     <input type="file" accept="image/png">
+    <br />
+    <br />
     <canvas></canvas>
+    <br />
+    <p>Give it a moment to render and then download the cleansed image.</p>
     <button>Download</button>
-	<script src="index.js"></script>
+    <script src="index.js?v=0.1"></script>
   </body>
 </html>
